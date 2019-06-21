@@ -80,28 +80,42 @@ class Board extends Component {
 			[1,4,8,10,12],
 			[1,4,6,10,14]
 		]
-		let i=0, lineWin=0, totalWin=0;
+		let i=0, lineWin=0, totalWin=0, winningCards=[];
 		let currentState = this.state.boardState.slice(0);
 		for(i=0; i<15; i++) {
 			if (currentState[winningLines[i][0]] !== currentState[winningLines[i][1]]) continue;
 			else if (currentState[winningLines[i][1]] !== currentState[winningLines[i][2]]) continue; 
 			else {
 				lineWin = 5;
+				winningCards.push(winningLines[i][0], winningLines[i][1], winningLines[i][2])
 				if (currentState[winningLines[i][0]] === currentState[winningLines[i][3]]) {
 					lineWin = 10;
-					if (currentState[winningLines[i][0]] === currentState[winningLines[i][4]]) lineWin = 15;	
+					winningCards.push(winningLines[i][4]);
+					if (currentState[winningLines[i][0]] === currentState[winningLines[i][4]]) {
+						lineWin = 15;	
+						winningCards.push(winningLines[i][5]);
+					}
 				}
 			}
 			if(lineWin !== 0) console.log(`won ${lineWin} on line ${i}`)
 			totalWin = totalWin + lineWin;
 			lineWin = 0;
+			this.highlightWinningCards(winningCards);
+			winningCards = []; 
 		}
 		
 		if (totalWin !== 0) this.addScore(totalWin);
 	}
 
-	renderCard(i) {
+	renderWinningCard(i,enable) {
 		let x = this.state.boardState[i];
+		let style;
+		if(!enable){
+			style = '"background-color: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);"';
+		} else {
+			style = '"background-color: linear-gradient(62deg, rgba(55,1,1,1) 0%, rgba(221,38,114,1) 50%, rgba(212,21,21,1) 100%)";';
+		}
+		console.log("style: ", style);
 	    return (
 	      <Card 
 	        // breed={this.state.breedArray[x]}
@@ -109,7 +123,31 @@ class Board extends Component {
 	        doggo={this.state.urlArray[x]}
 	      />
 	    );
-	  }
+	}
+
+	highlightWinningCards(arr){
+		console.log("winningCards: ", arr)
+		for(let i=0; i<arr.length; i++) {
+			this.renderWinningCard(arr[i], true);
+			console.log(`card ${arr[i]}`)
+		}
+		sleep(5000);
+		console.log()
+		for(let i=0; i<arr.length; i++) {
+			this.renderWinningCard(arr[i], false);
+		}
+	}
+	renderCard(i) {
+		let x = this.state.boardState[i];
+	    return (
+	      <Card 
+	        // breed={this.state.breedArray[x]}
+	        breed={x}
+	        doggo={this.state.urlArray[x]}
+	        id={i}
+	      />
+	    );
+	}
 
 	renderScoreboard(){
 		return (
@@ -135,7 +173,7 @@ class Board extends Component {
 					{this.renderCard(2)}{this.renderCard(5)}{this.renderCard(8)}{this.renderCard(11)}{this.renderCard(14)}
 				</div>
 				<button className='spinButton' onClick={() => {
-					
+					document.getElementById("#0").style.background-image='linear-gradient(62deg, rgba(55,1,1,1) 0%, rgba(221,38,114,1) 50%, rgba(212,21,21,1) 100%)';
 					this.newBoardState();
 					this.addScore(-1);
 					this.renderScoreboard();
@@ -191,3 +229,7 @@ function sleep(milliseconds) {
     }
   }
 }
+
+// function turnRed(i) {
+// 	ReactDOM.document.getElementById(i).style.background-color="linear-gradient(62deg, rgba(55,1,1,1) 0%, rgba(221,38,114,1) 50%, rgba(212,21,21,1) 100%)";
+// }

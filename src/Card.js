@@ -7,7 +7,8 @@ class Card extends Component {
 		super(props);
 		this.state = {
 			doggo: "",
-			breed: ""
+			breed: "",
+			id: ""
 		}
 	}
 
@@ -26,7 +27,7 @@ class Card extends Component {
 	render() {
 		// const {doggo, breed} = this.state;
 		return (
-			<div className="card w-20 bw0">
+			<div className="card w-20 bw0" id={this.props.id}>
 				<img alt="" src={this.props.doggo}/>
 				<p>{this.props.breed}</p>
 			</div>

@@ -4,8 +4,9 @@
 
 .cards {
 	display: none; 	
-	grid-template-columns: repeat(5, 15%);
-	grid-template-rows: repeat(5, 25%);
+	grid-template-columns: repeat(5, 18%);
+	grid-template-rows: repeat(3, 35%);
+	padding-bottom: 5%;
 	justify-items: center;
 	justify-content: center;
 }
