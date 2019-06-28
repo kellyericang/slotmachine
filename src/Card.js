@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import 'tachyons';
 import './Card.css';
+// import { CSSTransition } from 'react-transition-group'
 
 class Card extends Component {
 	constructor(props) {
@@ -8,6 +9,7 @@ class Card extends Component {
 		this.state = {
 			doggo: "",
 			breed: "",
+			win: "",
 			id: ""
 		}
 	}
@@ -26,10 +28,27 @@ class Card extends Component {
 
 	render() {
 		// const {doggo, breed} = this.state;
+		// console.log(this.props)
+
+		// this.setState({
+		// 	win: this.props.win
+		// });
+
+		let win2 = this.props.win;
+		let style; 
+		if(!this.state.win){
+			style = "background-color: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)";
+		} else {
+			style = "background-color: linear-gradient(62deg, rgba(55,1,1,1) 0%, rgba(221,38,114,1) 50%, rgba(212,21,21,1) 100%)";
+		}
+		// console.log("id: ", this.props.id, "win: ", this.props.win);
 		return (
-			<div className="card w-20 bw0" id={this.props.id}>
+			<div className="card w-20" id={this.props.id} style={{style}}>
 				<img alt="" src={this.props.doggo}/>
-				<p>{this.props.breed}</p>
+				<p>
+					breed: {this.props.breed}<br/>
+					win: {win2}
+				</p>
 			</div>
 		)
 	}

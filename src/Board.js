@@ -17,7 +17,8 @@ class Board extends Component {
 			score: 10000,
 			urlArray: [],
 			breedArray: [],
-			boardState: []
+			boardState: [10,9,2,2,8,9,3,6,7,10,2,1,5,0,1],
+			winningCards: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 		}
 	}
 
@@ -25,10 +26,8 @@ class Board extends Component {
 		const response = await fetch('https://dog.ceo/api/breeds/image/random/11');
 		const obj = await response.json(); 
 
-		var urls = obj.message;
-		var urls2 = obj.message.slice(0);
-
-		this.newBoardState();
+		const urls = obj.message;
+		const urls2 = obj.message.slice(0);
 
 		this.setState({
 			urlArray: urls,
@@ -50,7 +49,6 @@ class Board extends Component {
 		this.setState({
 			boardState: newState
 		});
-
 	}
 
 	addScore(i) {
@@ -58,8 +56,6 @@ class Board extends Component {
 		this.setState({
 			score: this.state.score + i
 		})
-		// console.log(`new score ${this.state.score}`)
-		
 	}
 
 	checkWin(){
@@ -100,50 +96,45 @@ class Board extends Component {
 			if(lineWin !== 0) console.log(`won ${lineWin} on line ${i}`)
 			totalWin = totalWin + lineWin;
 			lineWin = 0;
-			this.highlightWinningCards(winningCards);
+			for(let card of winningCards) {
+				// this.renderWinningCard(card)
+				this.setState({
+					winningCards: update(this.state.winningCards, {card: 1})
+				});
+			}
+			
 			winningCards = []; 
 		}
 		
 		if (totalWin !== 0) this.addScore(totalWin);
+		else this.setState({winningCards: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]})
 	}
 
-	renderWinningCard(i,enable) {
+	renderWinningCard(i) {
 		let x = this.state.boardState[i];
-		let style;
-		if(!enable){
-			style = '"background-color: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);"';
-		} else {
-			style = '"background-color: linear-gradient(62deg, rgba(55,1,1,1) 0%, rgba(221,38,114,1) 50%, rgba(212,21,21,1) 100%)";';
-		}
-		console.log("style: ", style);
+		let win = true;
+		console.log("card:", i, "win: ", win)
 	    return (
 	      <Card 
 	        // breed={this.state.breedArray[x]}
 	        breed={x}
 	        doggo={this.state.urlArray[x]}
+	        win={win}
+	        id={i}
 	      />
 	    );
 	}
 
-	highlightWinningCards(arr){
-		console.log("winningCards: ", arr)
-		for(let i=0; i<arr.length; i++) {
-			this.renderWinningCard(arr[i], true);
-			console.log(`card ${arr[i]}`)
-		}
-		sleep(5000);
-		console.log()
-		for(let i=0; i<arr.length; i++) {
-			this.renderWinningCard(arr[i], false);
-		}
-	}
 	renderCard(i) {
 		let x = this.state.boardState[i];
+		let win = false;
+		console.log("card:", i, "win: ", win)
 	    return (
 	      <Card 
 	        // breed={this.state.breedArray[x]}
 	        breed={x}
 	        doggo={this.state.urlArray[x]}
+	        win={win}
 	        id={i}
 	      />
 	    );
@@ -155,33 +146,63 @@ class Board extends Component {
 		);
 	}
 
+	renderCards() {
+		let x = this.state.boardState;
+		return (
+			<div className="cards">
+				<Card breed={x[0]} doggo={this.state.urlArray[x[0]]} win={0} id={0} />
+				<Card breed={x[3]} doggo={this.state.urlArray[x[3]]} win={0} id={3} />
+				<Card breed={x[6]} doggo={this.state.urlArray[x[6]]} win={0} id={6} />
+				<Card breed={x[9]} doggo={this.state.urlArray[x[9]]} win={0} id={9} />
+		    	<Card breed={x[12]} doggo={this.state.urlArray[x[12]]} win={0} id={12} />
+
+		    	<Card breed={x[1]} doggo={this.state.urlArray[x[1]]} win={0} id={1} />
+		    	<Card breed={x[4]} doggo={this.state.urlArray[x[4]]} win={0} id={4} />
+		    	<Card breed={x[7]} doggo={this.state.urlArray[x[7]]} win={0} id={7} />
+		    	<Card breed={x[10]} doggo={this.state.urlArray[x[10]]} win={0} id={10} />
+		    	<Card breed={x[13]} doggo={this.state.urlArray[x[13]]} win={0} id={13} />
+
+		    	<Card breed={x[2]} doggo={this.state.urlArray[x[2]]} win={0} id={2} />
+		    	<Card breed={x[5]} doggo={this.state.urlArray[x[5]]} win={0} id={5} />
+		    	<Card breed={x[8]} doggo={this.state.urlArray[x[8]]} win={0} id={8} />
+		    	<Card breed={x[11]} doggo={this.state.urlArray[x[11]]} win={0} id={11} />
+		    	<Card breed={x[14]} doggo={this.state.urlArray[x[14]]} win={0} id={14} />
+	    	</div>
+		);
+	}
+
 	render() {
 		// console.log("current state:", this.state.boardState);
 		return (
 			<div className="board">
 				<h1 className='tc garamond'>doggo slot machine</h1>
+
 				{this.renderScoreboard()}
+				{this.renderCards()}
+
 				<button className='startGameButton' 
-					onClick={() => {document.querySelector(".cards").style.display = "grid";
+					onClick={() => {
+					
 					document.querySelector(".startGameButton").style.display = "none";
 					document.querySelector(".spinButton").style.display="inline";
 					document.querySelector(".scoreboard").style.display="inline";
-					}}>START GAME</button>
-				<div className="cards">
-					{this.renderCard(0)}{this.renderCard(3)}{this.renderCard(6)}{this.renderCard(9)}{this.renderCard(12)}
-					{this.renderCard(1)}{this.renderCard(4)}{this.renderCard(7)}{this.renderCard(10)}{this.renderCard(13)}
-					{this.renderCard(2)}{this.renderCard(5)}{this.renderCard(8)}{this.renderCard(11)}{this.renderCard(14)}
-				</div>
+					document.querySelector(".cards").style.display = "grid";
+					}}>
+					START GAME
+				</button>
+
 				<button className='spinButton' onClick={() => {
-					document.getElementById("#0").style.background-image='linear-gradient(62deg, rgba(55,1,1,1) 0%, rgba(221,38,114,1) 50%, rgba(212,21,21,1) 100%)';
-					this.newBoardState();
+					this.renderCards();
 					this.addScore(-1);
-					this.renderScoreboard();
+					// this.renderScoreboard();
+					this.newBoardState();
+					sleep(500);
+					
 					this.checkWin();
-					
-					this.renderScoreboard();
-					
-				}}>spin!</button>
+					// this.renderScoreboard();
+				}}>
+				spin!
+				</button>
 			</div>
 		)
 	}
