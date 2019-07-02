@@ -34,7 +34,6 @@ class Card extends Component {
 		// 	win: this.props.win
 		// });
 
-		let win2 = this.props.win;
 		let style; 
 		if(!this.state.win){
 			style = "background-color: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)";
@@ -47,7 +46,7 @@ class Card extends Component {
 				<img alt="" src={this.props.doggo}/>
 				<p>
 					breed: {this.props.breed}<br/>
-					win: {win2}
+					win: {this.props.win}
 				</p>
 			</div>
 		)
