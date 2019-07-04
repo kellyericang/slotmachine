@@ -33,58 +33,10 @@ class Cards extends Component {
 	}
 
 
-	checkWin(){
-		const winningLines = [
-			[1,4,7,10,13],
-			[0,3,6,9,12],
-			[2,5,8,11,14],
-			[0,4,8,10,12],
-			[2,4,6,10,14],
-			[2,5,7,9,12],
-			[0,3,7,11,14],
-			[1,5,7,9,13],
-			[1,3,7,11,13],
-			[2,4,7,10,12],
-			[0,4,7,10,14],
-			[1,5,8,10,12],
-			[1,3,6,10,14],
-			[1,4,8,10,12],
-			[1,4,6,10,14]
-		]
-		let i=0, lineWin=0, totalWin=0, winningCardsArray=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-		let currentState = this.state.boardState.slice(0);
-		for(i=0; i<15; i++) {
-			if (currentState[winningLines[i][0]] !== currentState[winningLines[i][1]]) continue;
-			else if (currentState[winningLines[i][1]] !== currentState[winningLines[i][2]]) continue; 
-			else {
-				lineWin = 5;
-				winningCardsArray.push(winningLines[i][0], winningLines[i][1], winningLines[i][2])
-				if (currentState[winningLines[i][0]] === currentState[winningLines[i][3]]) {
-					lineWin = 10;
-					winningCardsArray.push(winningLines[i][4]);
-					if (currentState[winningLines[i][0]] === currentState[winningLines[i][4]]) {
-						lineWin = 15;	
-						winningCardsArray.push(winningLines[i][5]);
-					}
-				}
-			}
-			if(lineWin !== 0) console.log(`won ${lineWin} on line ${i}`)
-			totalWin = totalWin + lineWin;
-			lineWin = 0;
-		}
+	
 
-		if (totalWin !== 0) {
-			this.addScore(totalWin);
-			console.log("setting winning state array:",winningStateArray(winningCardsArray));
-			this.setState({ winningCards: winningStateArray(winningCardsArray) });
-			
-			// sleep(1000);
-			
-			console.log("state",this.state.winningCards);
-			this.renderCards();
-			this.setState({ winningCards: resetWinningStateArray(winningCardsArray) });
-			this.renderCards();
-		}
+	updateWinningCardsState(arr) {
+		this.setState({ winningCards: arr });
 	}
 
 	renderCard(i) {
@@ -104,25 +56,27 @@ class Cards extends Component {
 
 	render() {
 		let x = this.props.boardState;
+		// console.log(this.props.winningCards);
+
 		return (
 			<div className="cards">
-				<Card breed={x[0]} doggo={this.state.urlArray[x[0]]} win={this.state.winningCards[0]} id={0} />
-				<Card breed={x[3]} doggo={this.state.urlArray[x[3]]} win={this.state.winningCards[3]} id={3} />
-				<Card breed={x[6]} doggo={this.state.urlArray[x[6]]} win={this.state.winningCards[6]} id={6} />
-				<Card breed={x[9]} doggo={this.state.urlArray[x[9]]} win={this.state.winningCards[9]} id={9} />
-		    	<Card breed={x[12]} doggo={this.state.urlArray[x[12]]} win={this.state.winningCards[12]} id={12} />
+				<Card breed={x[0]} doggo={this.state.urlArray[x[0]]} win={this.props.winningCards[0]} id={0} />
+				<Card breed={x[3]} doggo={this.state.urlArray[x[3]]} win={this.props.winningCards[3]} id={3} />
+				<Card breed={x[6]} doggo={this.state.urlArray[x[6]]} win={this.props.winningCards[6]} id={6} />
+				<Card breed={x[9]} doggo={this.state.urlArray[x[9]]} win={this.props.winningCards[9]} id={9} />
+		    	<Card breed={x[12]} doggo={this.state.urlArray[x[12]]} win={this.props.winningCards[12]} id={12} />
 
-		    	<Card breed={x[1]} doggo={this.state.urlArray[x[1]]} win={this.state.winningCards[1]} id={1} />
-		    	<Card breed={x[4]} doggo={this.state.urlArray[x[4]]} win={this.state.winningCards[4]} id={4} />
-		    	<Card breed={x[7]} doggo={this.state.urlArray[x[7]]} win={this.state.winningCards[7]} id={7} />
-		    	<Card breed={x[10]} doggo={this.state.urlArray[x[10]]} win={this.state.winningCards[10]} id={10} />
-		    	<Card breed={x[13]} doggo={this.state.urlArray[x[13]]} win={this.state.winningCards[13]} id={13} />
+		    	<Card breed={x[1]} doggo={this.state.urlArray[x[1]]} win={this.props.winningCards[1]} id={1} />
+		    	<Card breed={x[4]} doggo={this.state.urlArray[x[4]]} win={this.props.winningCards[4]} id={4} />
+		    	<Card breed={x[7]} doggo={this.state.urlArray[x[7]]} win={this.props.winningCards[7]} id={7} />
+		    	<Card breed={x[10]} doggo={this.state.urlArray[x[10]]} win={this.props.winningCards[10]} id={10} />
+		    	<Card breed={x[13]} doggo={this.state.urlArray[x[13]]} win={this.props.winningCards[13]} id={13} />
 
-		    	<Card breed={x[2]} doggo={this.state.urlArray[x[2]]} win={this.state.winningCards[2]} id={2} />
-		    	<Card breed={x[5]} doggo={this.state.urlArray[x[5]]} win={this.state.winningCards[5]} id={5} />
-		    	<Card breed={x[8]} doggo={this.state.urlArray[x[8]]} win={this.state.winningCards[8]} id={8} />
-		    	<Card breed={x[11]} doggo={this.state.urlArray[x[11]]} win={this.state.winningCards[11]} id={11} />
-		    	<Card breed={x[14]} doggo={this.state.urlArray[x[14]]} win={this.state.winningCards[14]} id={14} />
+		    	<Card breed={x[2]} doggo={this.state.urlArray[x[2]]} win={this.props.winningCards[2]} id={2} />
+		    	<Card breed={x[5]} doggo={this.state.urlArray[x[5]]} win={this.props.winningCards[5]} id={5} />
+		    	<Card breed={x[8]} doggo={this.state.urlArray[x[8]]} win={this.props.winningCards[8]} id={8} />
+		    	<Card breed={x[11]} doggo={this.state.urlArray[x[11]]} win={this.props.winningCards[11]} id={11} />
+		    	<Card breed={x[14]} doggo={this.state.urlArray[x[14]]} win={this.props.winningCards[14]} id={14} />
 	    	</div>
 		);		
 	}
@@ -147,7 +101,6 @@ function addBreeds(breeds) {
 }
 
 
-
 function sleep(milliseconds) {
   var start = new Date().getTime();
   for (var i = 0; i < 1e7; i++) {
@@ -157,12 +110,4 @@ function sleep(milliseconds) {
   }
 }
 
-function winningStateArray(arr) {
-	let newArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-	for(let num of arr)	newArray[num] = 1
-	return newArray;
-}
 
-function resetWinningStateArray(){
-	return [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-}
