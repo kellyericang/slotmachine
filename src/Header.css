@@ -1,0 +1,38 @@
+header {
+	background-color: #8e7c93ee;
+	color: #343434;
+	padding: 10px;
+	float: left;
+	position: sticky;
+}
+
+header a {
+	padding: 10px;
+	text-decoration: none;
+	color: #e6e6e6;
+	height: 100%;
+	font-size: 16px;
+}
+
+header a:hover {
+	background-color: #e6e6e6;
+	color: #343434;
+	height: 100%;
+}
+@media only screen and (min-width: 620px) {
+	header a{
+		font-size: 1.5rem;
+	}
+}
+
+#current {
+	background-color: #e6e6e6;
+	color: #343434;
+	height: 100%;
+	pointer-events: none;
+}
+
+#current:hover {
+	background-color: #8e7c93ee;
+	color: #e6e6e6;
+}

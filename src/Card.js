@@ -9,7 +9,7 @@ class Card extends Component {
 		this.state = {
 			doggo: "",
 			breed: "",
-			win: "",
+			win: "false",
 			id: ""
 		}
 	}

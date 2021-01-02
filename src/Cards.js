@@ -56,7 +56,7 @@ class Cards extends Component {
 
 	render() {
 		let x = this.props.boardState;
-		// console.log(this.props.winningCards);
+		console.log(this.props.winningCards);
 
 		return (
 			<div className="cards">

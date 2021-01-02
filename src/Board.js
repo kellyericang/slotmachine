@@ -62,6 +62,7 @@ class Board extends Component {
 			lineWin = 0;
 		}
 		if(totalWin !== 0)	this.addScore(totalWin);
+		console.log([winningStateArray(winningCardsArray)]);
 		return winningStateArray(winningCardsArray);
 	}
 
@@ -100,7 +101,7 @@ class Board extends Component {
 	}
 
 	render() {
-		// console.log("current state:", this.state.boardState);
+		// console.log([this.state.boardState,this.checkWin]);
 		return (
 			<div className="board">
 				<h1 className='tc garamond'>doggo slot machine</h1>

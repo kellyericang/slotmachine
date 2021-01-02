@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Board from './Board';
+import Header from './Header';
+import Footer from './Footer';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 
 ReactDOM.render(
 	<div>
+		<Header/>
 		<Board />
+		<Footer />
 	</div>
 , document.getElementById('root'));
 
