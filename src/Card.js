@@ -43,7 +43,7 @@ class Card extends Component {
 		// console.log("id: ", this.props.id, "win: ", this.props.win);
 		return (
 			<div className="card w-20" id={this.props.id} style={{style}}>
-				<img alt="" src={this.props.doggo}/>
+				<img className="dogImage" alt="" src={this.props.doggo}/>
 				<p>
 					breed: {this.props.breed}<br/>
 					win: {this.props.win}

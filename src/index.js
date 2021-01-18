@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 
 ReactDOM.render(
-	<div>
+	<div className="index">
 		<Header/>
 		<Board />
 		<Footer />
@@ -23,7 +23,7 @@ serviceWorker.unregister();
 
 /*** 
 
-grab 15 dogs from the online api database 
+grab 11 dogs from the online api database 
 have a set pattern for the reels 
 each spin, rng 5 numbers (one for each reel) 
 each rng number is the middle one for that reel 
@@ -34,5 +34,14 @@ board
 0 3 6 9  12
 1 4 7 10 13
 2 5 8 11 14
+
+click spin button 
+deduct bet 
+spin animation 
+new board state 
+check new board state for a win 
+update winning cards 
+	show animation for winning line 
+	add winnings to score
 
 ***/
