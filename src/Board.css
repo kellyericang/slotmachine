@@ -38,13 +38,19 @@
 	width: 95%;
 }
 
+@media only screen and (min-width: 720px) and (min-height: 680px){
+	.card {
+		height: 8em;
+	}
+}
+
 @media only screen and (min-width: 720px) and (min-height: 770px) {
 	.card {
 		height: 10em;
 	}
 }
 
-@media only screen and (min-width: 1080px) and (min-height: 870px) {
+@media only screen and (min-width: 1080px) and (min-height: 850px) {
 	.card {
 		height: 12em;
 	}
