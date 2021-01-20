@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4a815e03b19a97bf66921cbfb736b2ca",
+    "revision": "a81fdaa62a1ad697a6766deb717df172",
     "url": "/slotmachine/index.html"
   },
   {
-    "revision": "e77f7c4e9036cde5d484",
+    "revision": "9ebdf81676c1e0715fa8",
     "url": "/slotmachine/static/css/2.31dafeb2.chunk.css"
   },
   {
-    "revision": "97be57ac924166938813",
-    "url": "/slotmachine/static/css/main.da463f53.chunk.css"
+    "revision": "9b3812cf897f016e7400",
+    "url": "/slotmachine/static/css/main.ee8991e3.chunk.css"
   },
   {
-    "revision": "e77f7c4e9036cde5d484",
-    "url": "/slotmachine/static/js/2.f9db5f14.chunk.js"
+    "revision": "9ebdf81676c1e0715fa8",
+    "url": "/slotmachine/static/js/2.eb7e96af.chunk.js"
   },
   {
-    "revision": "97be57ac924166938813",
-    "url": "/slotmachine/static/js/main.41fa68f8.chunk.js"
+    "revision": "9b3812cf897f016e7400",
+    "url": "/slotmachine/static/js/main.eaa865b7.chunk.js"
   },
   {
     "revision": "4dbb6ac398f214fd46a5",

@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/slotmachine/static/css/main.da463f53.chunk.css",
-    "main.js": "/slotmachine/static/js/main.41fa68f8.chunk.js",
-    "main.js.map": "/slotmachine/static/js/main.41fa68f8.chunk.js.map",
+    "main.css": "/slotmachine/static/css/main.ee8991e3.chunk.css",
+    "main.js": "/slotmachine/static/js/main.eaa865b7.chunk.js",
+    "main.js.map": "/slotmachine/static/js/main.eaa865b7.chunk.js.map",
     "runtime~main.js": "/slotmachine/static/js/runtime~main.7aab269d.js",
     "runtime~main.js.map": "/slotmachine/static/js/runtime~main.7aab269d.js.map",
     "static/css/2.31dafeb2.chunk.css": "/slotmachine/static/css/2.31dafeb2.chunk.css",
-    "static/js/2.f9db5f14.chunk.js": "/slotmachine/static/js/2.f9db5f14.chunk.js",
-    "static/js/2.f9db5f14.chunk.js.map": "/slotmachine/static/js/2.f9db5f14.chunk.js.map",
+    "static/js/2.eb7e96af.chunk.js": "/slotmachine/static/js/2.eb7e96af.chunk.js",
+    "static/js/2.eb7e96af.chunk.js.map": "/slotmachine/static/js/2.eb7e96af.chunk.js.map",
     "index.html": "/slotmachine/index.html",
-    "precache-manifest.6ceb3a83490485eb76d4ace2767b1bb0.js": "/slotmachine/precache-manifest.6ceb3a83490485eb76d4ace2767b1bb0.js",
+    "precache-manifest.acade37258fb73decc6ab4aee20e76f1.js": "/slotmachine/precache-manifest.acade37258fb73decc6ab4aee20e76f1.js",
     "service-worker.js": "/slotmachine/service-worker.js",
     "static/css/2.31dafeb2.chunk.css.map": "/slotmachine/static/css/2.31dafeb2.chunk.css.map",
-    "static/css/main.da463f53.chunk.css.map": "/slotmachine/static/css/main.da463f53.chunk.css.map",
+    "static/css/main.ee8991e3.chunk.css.map": "/slotmachine/static/css/main.ee8991e3.chunk.css.map",
     "static/media/index.css": "/slotmachine/static/media/jellyfish.b0db68f3.jpg"
   }
 }
