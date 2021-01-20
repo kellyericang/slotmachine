@@ -76,7 +76,9 @@ footer {
   text-shadow: 2px 2px 5px #343434;
   padding: 1em 1em;
   position: fixed;
-  bottom: 10px;
+  bottom: 0px;
+  width: 100%;
+  z-index: -1;
 }
 
 code {

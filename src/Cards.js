@@ -14,8 +14,8 @@ function Card(props){
 function Cards(props) {
 
 	const [urlArray, setUrlArray] = useState({urls: [] });
-	const [breedArray, setBreedArray] = useState({breeds: [] });
-	const [winningCards, setWinningCards] = useState( props.winningCards );
+	// const [breedArray, setBreedArray] = useState({breeds: [] });
+	// const [winningCards, setWinningCards] = useState( props.winningCards );
 
 	// card initialization
 	useEffect(() => {
@@ -24,47 +24,47 @@ function Cards(props) {
 			const obj = await response.json(); 
 
 			const urls = obj.message;
-			const urls2 = obj.message.slice(0);
+			// const urls2 = obj.message.slice(0);
 
 			setUrlArray(urls);
-			setBreedArray(urls2);
+			// setBreedArray(urls2);
 		};
 		fetchData();
 	}, []);
 
-	function updateWinningCardsState(arr) {
-		setWinningCards(arr);
-	}
+	// function updateWinningCardsState(arr) {
+	// 	setWinningCards(arr);
+	// }
 
-	function addBreeds(breeds) {
-		for(let i=0; i<breeds.length; i++) {
-			let breed = breeds[i].substring(30, breeds[i].lastIndexOf("/"));
+	// function addBreeds(breeds) {
+	// 	for(let i=0; i<breeds.length; i++) {
+	// 		let breed = breeds[i].substring(30, breeds[i].lastIndexOf("/"));
 
-			//removing hyphen and swapping words
-			if(breed.search("-") < 0) {
-				breeds[i] = breed;
-			} else {
-				let hyphen = breed.indexOf("-");
-				breeds[i] = breed.substring(hyphen+1) + " " + breed.substring(0,hyphen);
-			}	
-		}
-		return breeds;
-	}
+	// 		//removing hyphen and swapping words
+	// 		if(breed.search("-") < 0) {
+	// 			breeds[i] = breed;
+	// 		} else {
+	// 			let hyphen = breed.indexOf("-");
+	// 			breeds[i] = breed.substring(hyphen+1) + " " + breed.substring(0,hyphen);
+	// 		}	
+	// 	}
+	// 	return breeds;
+	// }
 
 
-	function getBreed(url) {
-		let breed = url.substring(30, url.lastIndexOf("/"));
+	// function getBreed(url) {
+	// 	let breed = url.substring(30, url.lastIndexOf("/"));
 
-		//removing hyphen and swapping words
-		if(breed.search("-") < 0) {
-			// console.log(`[${breed}]  not swapping`);
-			return breed;
-		} else {
-			// console.log(`[${breed}]  swapping words`);
-			let hyphen = breed.indexOf("-");
-			return breed.substring(hyphen+1) + " " + breed.substring(0,hyphen);
-		}
-	}
+	// 	//removing hyphen and swapping words
+	// 	if(breed.search("-") < 0) {
+	// 		// console.log(`[${breed}]  not swapping`);
+	// 		return breed;
+	// 	} else {
+	// 		// console.log(`[${breed}]  swapping words`);
+	// 		let hyphen = breed.indexOf("-");
+	// 		return breed.substring(hyphen+1) + " " + breed.substring(0,hyphen);
+	// 	}
+	// }
 
 	let x = props.boardState.boardState;
 

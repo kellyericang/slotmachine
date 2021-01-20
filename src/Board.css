@@ -6,7 +6,6 @@
 	display: none; 	
 	grid-template-columns: repeat(5, 18%);
 	grid-template-rows: repeat(3, 30%);
-	padding-bottom: 25px;
 	padding-top: 25px; 
 	justify-items: center;
 	justify-content: center;
@@ -39,10 +38,22 @@
 	width: 95%;
 }
 
+@media only screen and (min-width: 720px) and (min-height: 770px) {
+	.card {
+		height: 10em;
+	}
+}
+
+@media only screen and (min-width: 1080px) and (min-height: 870px) {
+	.card {
+		height: 12em;
+	}
+}
+
 .winner {
 	animation-name: winningCard;
 	animation-duration: 0.5s;
-	animation-iteration-count: 10;
+	animation-iteration-count: 7;
 }
 
 p {
@@ -54,13 +65,12 @@ p {
 }
 
 .dogImage {
-	box-shadow: 0 2px 4px 0 rgba(0,0,0);
 	width: 90%;
 	height: 90%;
 	object-fit: cover;
 }
 
-/* animations :O */
+/* animations */
 @keyframes winningCard {
 	0% {
 		background: rgb(224,71,86);
